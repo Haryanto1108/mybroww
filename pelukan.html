@@ -1,0 +1,148 @@
+<!<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peluk Virtual untuk TALA 💖</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      margin: 0; padding: 0;
+      text-align: center;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .heart {
+      font-size: 80px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .container {
+      background: rgba(255 255 255 / 0.15);
+      border-radius: 20px;
+      padding: 25px 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.7);
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #ff69b4;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ffe1ec;
+    }
+    .message {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #fff;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      text-align: left;
+      line-height: 1.6;
+      transition: opacity 2s ease, max-height 2s ease;
+    }
+    .message.fade-in {
+      opacity: 1;
+      max-height: 1000px;
+    }
+    .hug-animation {
+      margin-top: 20px;
+      display: none;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    img {
+      width: 250px;
+      border-radius: 10px;
+      user-select: none;
+      display: block;
+      margin: 0 auto;
+    }
+    audio {
+      margin-top: 30px;
+      outline: none;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Peluk Virtual untuk TALA 💖</h1>
+  <div class="heart">💗</div>
+
+  <div class="container">
+    <p>Hai TALA sayangku, ini peluk dari <strong>My Broww</strong> yang selalu mikirin kamu...</p>
+    <button class="btn" onclick="showMessage()">Klik untuk peluk + pesan spesial 🫂</button>
+
+    <div class="hug-animation" id="hug">
+      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Pelukan kucing lucu" />
+    </div>
+
+    <div class="message" id="message">
+      <p>
+        Sayangku TALA, aku tahu kamu sedang merasa nggak enak, terutama sakit gigi itu.<br><br>
+        Aku ingin kamu tahu, aku selalu ada di sini, menemani dan mendukung kamu. <br><br>
+        Semoga setiap detik yang kamu lalui segera diganti dengan senyum dan kebahagiaan.<br><br>
+        Ingat, kamu kuat, cantik, dan luar biasa. Sakit ini cuma sementara, tapi cintaku untukmu selamanya.<br><br>
+        Istirahat yang cukup ya, minum obat, dan jangan lupa makan makanan yang bikin kamu nyaman.<br><br>
+        Aku sayang banget sama kamu, Tala. Semoga cepat sembuh, ya.<br><br>
+        Always here for you, my love 💖🐱
+      </p>
+      <audio id="audio" src="about_you.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById('message');
+      const hug = document.getElementById('hug');
+
+      hug.style.display = 'block';
+
+      // reset kelas fade-in biar bisa dipakai ulang
+      message.classList.remove('fade-in');
+      message.style.display = 'block';
+
+      // kasih delay dikit supaya transisi jalan mulus
+      setTimeout(() => {
+        message.classList.add('fade-in');
+      }, 50);
+
+      window.scrollTo({ top: hug.offsetTop, behavior: 'smooth' });
+
+      const audio = document.getElementById('audio');
+      audio.play().catch(e => {
+        console.log("Audio autoplay gagal:", e);
+      });
+    }
+  </script>
+
+</body>
+</html>
